@@ -1,7 +1,7 @@
 import express, { json } from "express";
 import cors from "cors";
 import "express-async-errors";
-import { ValidationError } from "./utils/errors";
+import { handleError, ValidationError } from "./utils/errors";
 
 const app = express();
 
@@ -11,11 +11,11 @@ app.use(
   })
 );
 
-app.get("/", async (req, res) => {
-  throw new ValidationError("Daaaamn");
-});
+// app.get("/", async (req, res) => {
+//   throw new ValidationError("Daaaamn");
+// });
 
-app.use(json());
+app.use(handleError);
 
 // Routes...
 
